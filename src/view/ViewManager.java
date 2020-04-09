@@ -3,9 +3,13 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -36,6 +40,7 @@ public class ViewManager {
 		mainStage.setScene(mainScene);
 		createButtons();
 		createBackground();
+		createLogo();
 	}
 	private void addMenuButton(GameButton button) {
 		button.setLayoutX(MENU_BUTTONS_START_X);
@@ -102,6 +107,37 @@ public class ViewManager {
 	}
 	public List<GameButton> getMenuButtons() {
 		return menuButtons;
+	}
+	
+	private void createLogo() {
+		ImageView logo = new ImageView("logo1.png");
+		logo.setLayoutX(270);
+		logo.setLayoutY(20);
+		logo.setPreserveRatio(true);
+		logo.setFitHeight(200);
+		logo.setFitWidth(500);
+		
+		logo.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				logo.setEffect(new DropShadow());
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		logo.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				logo.setEffect(null);
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		mainPane.getChildren().add(logo);
 	}
 	
 }
