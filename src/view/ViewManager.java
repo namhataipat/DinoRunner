@@ -23,7 +23,7 @@ public class ViewManager {
 	private Scene mainScene;
 	
 	private final static int MENU_BUTTONS_START_X = 50;
-	private final static int MENU_BUTTONS_START_Y = 125;
+	private final static int MENU_BUTTONS_START_Y = 150;
 	
 	List<GameButton> menuButtons;
 	
@@ -39,7 +39,7 @@ public class ViewManager {
 	}
 	private void addMenuButton(GameButton button) {
 		button.setLayoutX(MENU_BUTTONS_START_X);
-		button.setLayoutY(MENU_BUTTONS_START_Y + menuButtons.size()*75);
+		button.setLayoutY(MENU_BUTTONS_START_Y + menuButtons.size()*80);
 		menuButtons.add(button);
 		mainPane.getChildren().add(button);
 	}
