@@ -3,10 +3,16 @@ package view;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.DINO;
 
@@ -24,6 +30,9 @@ public class GameViewManager {
 	private boolean isLeftKeyPressed;
 	private boolean isRightKeyPressed;
 	private AnimationTimer gameTimer;
+
+	private GridPane gridPane1;
+	private String BACKGROUND_IMG = "backgroundColorGrass.png";
 
 	public GameViewManager() {
 		initializeStage();
@@ -69,6 +78,7 @@ public class GameViewManager {
 	public void createNewGame(Stage menuStage, DINO chosenDino) {
 		this.menuStage = menuStage;
 		this.menuStage.hide();
+		createBackground();
 		createDino(chosenDino);
 		createGameLoop();
 		gameStage.show();
@@ -97,19 +107,24 @@ public class GameViewManager {
 
 	private void moveDino() {
 		if (isLeftKeyPressed && !isRightKeyPressed) {
-			if (dino.getLayoutX() > -20) {
+			if (dino.getLayoutX() > 10) {
 				dino.setLayoutX(dino.getLayoutX() - 3);
 			}
 		}
 		if (isRightKeyPressed && !isLeftKeyPressed) {
-			if (dino.getLayoutX() < 522) {
-				dino.setLayoutX(dino.getLayoutX()+3);
+			if (dino.getLayoutX() < 650) {
+				dino.setLayoutX(dino.getLayoutX() + 3);
 			}
 		}
-		if (!isLeftKeyPressed && !isRightKeyPressed) {
-
-		}
-		if (isLeftKeyPressed && isRightKeyPressed) {
-		}
 	}
+
+	private void createBackground() {
+		gridPane1 = new GridPane();
+		Image backgroundImg = new Image(BACKGROUND_IMG, 1024, 1024, false, true);
+		BackgroundImage backgroundIMG = new BackgroundImage(backgroundImg, BackgroundRepeat.REPEAT,
+				BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
+		gridPane1.setBackground(new Background(backgroundIMG));
+		gamePane.getChildren().add(gridPane1);
+	}
+
 }
