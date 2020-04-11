@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -13,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.text.Font;
+
 
 
 public class GameButton extends Button {
@@ -46,13 +48,13 @@ public class GameButton extends Button {
 		setPrefHeight(45);
 		setLayoutY(getLayoutY() + 4);
 	}
-
+	
 	private void setButtonReleasedStyle() {
 		Image freeBtn = new Image("blue_button00.png");
 		BackgroundImage freeBtnBg = new BackgroundImage(freeBtn, null,null,null,null);
 		this.setBackground(new Background(freeBtnBg));
 	//	setStyle(BUTTON_FREE_STYLE);
-		setPrefHeight(45);
+		setPrefHeight(49);
 		setLayoutY(getLayoutY()-4 );
 	}
 		
@@ -62,7 +64,6 @@ public class GameButton extends Button {
 
 			@Override
 			public void handle(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if (e.getButton().equals(MouseButton.PRIMARY)) {
 					setButtonPressedStyle();
 				}
@@ -74,7 +75,6 @@ public class GameButton extends Button {
 
 			@Override
 			public void handle(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if (e.getButton().equals(MouseButton.PRIMARY)) {
 					setButtonReleasedStyle();
 				}
@@ -85,8 +85,7 @@ public class GameButton extends Button {
 
 			@Override
 			public void handle(MouseEvent e) {
-				// TODO Auto-generated method stub
-				setEffect(new javafx.scene.effect.DropShadow());
+				setEffect(new DropShadow());
 			}
 		});
 		
@@ -94,10 +93,10 @@ public class GameButton extends Button {
 
 			@Override
 			public void handle(MouseEvent e) {
-				// TODO Auto-generated method stub
 				setEffect(null);
 				
 			}
 		});
 	}
+
 	}
