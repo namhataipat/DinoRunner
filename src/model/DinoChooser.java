@@ -16,7 +16,7 @@ public class DinoChooser extends VBox {
 	
 	public DinoChooser(DINO dino) {
 		circleImage = new ImageView(circleNotChosen);
-		dinoImage = new ImageView(dino.getUrlDino());
+		dinoImage = new ImageView(new Image(dino.getUrlDino(), 60, 60, false, true));
 		dinoImage.setPreserveRatio(true);
 		dinoImage.setFitHeight(60);
 		this.dino = dino;

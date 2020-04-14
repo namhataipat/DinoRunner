@@ -225,31 +225,10 @@ public class ViewManager {
 		BackgroundImage background = new BackgroundImage(backgroundImg, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
 		mainPane.setBackground(new Background(background));
 	}
-//	public static int getHeight() {
-//		return HEIGHT;
-//	}
-//	public static int getWidth() {
-//		return WIDTH;
-//	}
-//	public AnchorPane getMainPane() {
-//		return mainPane;
-//	}
+
 	public Stage getMainStage() {
 		return mainStage;
 	}
-//	public Scene getMainScene() {
-//		return mainScene;
-//	}
-//	public static int getMenuButtonsStartX() {
-//		return MENU_BUTTONS_START_X;
-//	}
-//	public static int getMenuButtonsStartY() {
-//		return MENU_BUTTONS_START_Y;
-//	}
-//	public List<GameButton> getMenuButtons() {
-//		return menuButtons;
-//	}
-	
 	private void createLogo() {
 		ImageView logo = new ImageView("logo1.png");
 		logo.setLayoutX(270);
