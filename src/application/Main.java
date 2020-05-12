@@ -12,6 +12,7 @@ public class Main extends Application {
 			primaryStage  = manager.getMainStage();
 			primaryStage.show();
 			primaryStage.setTitle("Running Dino");
+			primaryStage.setResizable(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

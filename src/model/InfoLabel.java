@@ -16,8 +16,8 @@ import javafx.scene.text.Font;
 
 public class InfoLabel extends Label {
 
-	public final static String FONT_PATH = "res/Pomeranian-Regular.ttf";
-	public final static String BACKGROUND_IMAGE = "blue_button13.png";
+	public final static String FONT_PATH = ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString();
+	public final static String BACKGROUND_IMAGE = ClassLoader.getSystemResource("blue_button13.png").toString();
 	
 	public InfoLabel(String text) {
 		

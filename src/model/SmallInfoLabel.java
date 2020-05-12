@@ -17,12 +17,12 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.text.Font;
 
 public class SmallInfoLabel extends Label {
-	private final static String FONT_PATH = "res/Pomeranian-Regular.ttf";
+	private final static String FONT_PATH = ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString();
 
 	public SmallInfoLabel(String text) {
 		setPrefSize(170, 50);
 		BackgroundImage backgroundImage = new BackgroundImage(
-				new Image("/blue_label.png", 150, 50, false, true), 
+				new Image(ClassLoader.getSystemResource("blue_label.png").toString(), 150, 50, false, true), 
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
 		setBackground(new Background(backgroundImage));
 		setAlignment(Pos.CENTER_LEFT);

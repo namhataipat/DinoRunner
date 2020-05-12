@@ -9,12 +9,12 @@ public class DinoChooser extends VBox {
 	
 	private ImageView circleImage;
 	private ImageView dinoImage;
-	private String circleNotChosen = "dinochooser/grey_circle.png";
-	private String circleChosen = "dinochooser/blue_boxTick.png";
-	private DINO dino;
+	private String circleNotChosen = ClassLoader.getSystemResource("dinochooser/grey_circle.png").toString();
+	private String circleChosen = ClassLoader.getSystemResource("dinochooser/blue_boxTick.png").toString();
+	private Dinosaur dino;
 	private boolean isCircleChosen;
 	
-	public DinoChooser(DINO dino) {
+	public DinoChooser(Dinosaur dino) {
 		circleImage = new ImageView(circleNotChosen);
 		dinoImage = new ImageView(new Image(dino.getUrlDino(), 60, 60, false, true));
 		dinoImage.setPreserveRatio(true);
@@ -28,7 +28,7 @@ public class DinoChooser extends VBox {
 		
 	}
 
-	public DINO getDino() {
+	public Dinosaur getDino() {
 		return dino;
 	}
 	
