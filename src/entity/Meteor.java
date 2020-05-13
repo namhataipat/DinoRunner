@@ -9,7 +9,7 @@ public class Meteor extends FallingEntity implements Collidable  {
 	
 	private final static String METEOR_IMG = ClassLoader.getSystemResource("meteorBrown_med.png").toString();
 
-	public Meteor() {
+	public Meteor() { 
 		super(METEOR_IMG, 5, 20);
 		// TODO Auto-generated constructor stub
 	}

@@ -14,7 +14,7 @@ public class FallingEntity extends Entity  {
 
 	
 	public FallingEntity(String imageURL, int imageLength ,int radius) {
-		super();
+		super(); 
 		this.imageURL = imageURL;
 		this.imageView = new ImageView[imageLength];
 		for (int i=0; i<imageLength; i++) {
@@ -43,7 +43,7 @@ public class FallingEntity extends Entity  {
 		
 	}
 	
-	protected void checkIfElementsAreBehindTheDinoAndRelocate() {
+	public void checkIfElementsAreBehindTheDinoAndRelocate() {
 		for(int i=0; i<imageView.length; i++) {
 			if(imageView[i].getLayoutY() > 600) 
 				this.setNewElementPosition(imageView[i]);

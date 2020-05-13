@@ -18,7 +18,7 @@ public class Dino extends Entity{
 		dino.setFitHeight(135);
 		dino.setLayoutX(400);
 		dino.setLayoutY(450);
-	}
+	} 
 	
 	public ImageView getDinoImage() {
 		return dino;

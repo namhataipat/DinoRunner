@@ -1,30 +1,17 @@
 package model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import com.sun.jdi.InvocationException;
-
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
-import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
-
-
 
 public class GameButton extends Button {
 
-	private final String FONT_PATH = ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString();
-	//private final String BUTTON_PRESSED_STYLE = "-fx-background-color: transparent; -fx-background-image: url('res/blue_button01.png');";
-	//private final String BUTTON_FREE_STYLE = "-fx-background-color: transparent; -fx-background-image: url('res/blue_button00.png');";
-	
 	
 	public GameButton(String text) {
 		setText(text);
@@ -37,8 +24,8 @@ public class GameButton extends Button {
 
 	private void setButtonFont() {
 		try {
-			setFont(Font.loadFont(new FileInputStream(FONT_PATH), 21));
-		} catch (FileNotFoundException e) {
+			setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 21));
+		} catch (Exception e) {
 			setFont(Font.font("Verdana", 21));
 		}
 	}

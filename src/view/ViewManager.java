@@ -91,12 +91,17 @@ public class ViewManager {
 		helpSubScene = new RunningDinoSubScene();
 		mainPane.getChildren().add(helpSubScene);
 		ImageView help = new ImageView(
-				new Image(ClassLoader.getSystemResource("help.png").toString(), 450, 450, false, true));
-		help.setLayoutX(-5);
-		help.setLayoutY(-10);
+				new Image(ClassLoader.getSystemResource("howtoplay.png").toString(), 450, 400, false, true));
+		help.setLayoutX(0);
+		help.setLayoutY(-5);
 		helpSubScene.getPane().getChildren().add(help);
 
 		creditSubScene = new RunningDinoSubScene();
+		ImageView credit = new ImageView(
+				new Image(ClassLoader.getSystemResource("credit.png").toString(), 450,400,false, true));
+		credit.setLayoutX(0);
+		credit.setLayoutY(-5);
+		creditSubScene.getPane().getChildren().add(credit);
 		mainPane.getChildren().add(creditSubScene);
 
 		createDinoChooserSubScene();
@@ -107,6 +112,7 @@ public class ViewManager {
 		mainPane.getChildren().add(dinoChooserSubScene);
 
 		InfoLabel chooseDinoLabel = new InfoLabel("CHOOSE YOUR DINO");
+		chooseDinoLabel.setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 20));
 		chooseDinoLabel.setLayoutX(35);
 		chooseDinoLabel.setLayoutY(25);
 		dinoChooserSubScene.getPane().getChildren().add(chooseDinoLabel);
@@ -119,6 +125,7 @@ public class ViewManager {
 		mainPane.getChildren().add(scoresSubScene);
 
 		InfoLabel scoresLabel = new InfoLabel("LEADERBOARD");
+		scoresLabel.setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 20));
 		scoresLabel.setLayoutX(35);
 		scoresLabel.setLayoutY(25);
 		ImageView podium = new ImageView(
@@ -151,7 +158,7 @@ public class ViewManager {
 			t3.setX(350);
 			t3.setY(215);
 			t3.resize(300, 300);
-			t3.setFont(new Font(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
+			t3.setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
 			scoresSubScene.getPane().getChildren().add(t3);
 		}
 		if (leaders.size() > 1) {
@@ -159,7 +166,7 @@ public class ViewManager {
 			t2.setX(80);
 			t2.setY(175);
 			t2.resize(300, 300);
-			t2.setFont(new Font(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
+			t2.setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
 			scoresSubScene.getPane().getChildren().add(t2);
 		}
 		if (leaders.size() > 0) {
@@ -167,7 +174,7 @@ public class ViewManager {
 			t1.setX(210);
 			t1.setY(110);
 			t1.resize(300, 300);
-			t1.setFont(new Font(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
+			t1.setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 15));
 			scoresSubScene.getPane().getChildren().add(t1);
 		}
 	}

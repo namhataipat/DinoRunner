@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import entity.BigMeteor;
+import entity.Dino;
 import entity.Meteor;
 import entity.NotYourFood;
 import entity.YourFood;
@@ -40,8 +41,9 @@ public class GameViewManager {
 	private ImageView dino;
 
 	private static Dinosaur chosenDino;
-	private static NotYourFood notYourFood = new NotYourFood(chosenDino);
-	private static YourFood food = new YourFood(chosenDino);
+	private static Dino dinosaur = new Dino();
+	private static NotYourFood notYourFood;
+	private static YourFood food;
 	private static BigMeteor bigMeteors = new BigMeteor();
 	private static Meteor medMeteors = new Meteor();
 
@@ -131,13 +133,13 @@ public class GameViewManager {
 		gameStage.setScene(gameScene);
 	}
 
-	public void createNewGame(Stage menuStage, Dinosaur chosenDino) {
-		this.chosenDino = chosenDino;
-		this.menuStage = menuStage;
-		this.menuStage.hide();
+	public void createNewGame(Stage menuS, Dinosaur chosenD) {
+		chosenDino = chosenD;
+		menuStage = menuS;
+		menuStage.hide();
 		createBackground();
-		createDino(chosenDino);
-		createGameElements(chosenDino);
+		dinosaur.createDino(chosenD);
+		createGameElements(chosenD);
 		createGameLoop();
 		backgroundMusic = new AudioClip(ClassLoader.getSystemResource("sound/backGround Sound.wav").toString());
 		backgroundMusic.setCycleCount(AudioClip.INDEFINITE);
@@ -145,6 +147,15 @@ public class GameViewManager {
 		backgroundMusic.play();
 		gameStage.show();
 	}
+	
+//	public void createDino(Dinosaur chosenDino) {
+	//	dino = new ImageView(chosenDino.getUrlDino());
+//		dino.setPreserveRatio(true);
+	//	dino.setFitHeight(135);
+//		dino.setLayoutX(400);
+//		dino.setLayoutY(450);
+//	} 
+	
 
 	private void createGameElements(Dinosaur chosenDino) {
 
@@ -158,6 +169,9 @@ public class GameViewManager {
 			gamePane.getChildren().add(playerLifes[i]);
 
 		}
+		
+		food = new YourFood(chosenDino);
+		notYourFood = new NotYourFood(chosenDino);
 
 		// String yourFood = null;
 		// if(chosenDino.getTypeDino() == "CARNIVORE" ) {
@@ -242,14 +256,14 @@ public class GameViewManager {
 		image.setLayoutY(-(randomPositionGenerator.nextInt(3200) + 600));
 	}
 
-	private void createDino(Dinosaur chosenDino) {
-		dino = new ImageView(chosenDino.getUrlDino());
-		dino.setPreserveRatio(true);
-		dino.setFitHeight(135);
-		dino.setLayoutX(GAME_WIDTH / 2);
-		dino.setLayoutY(GAME_HEIGHT - 150);
-		gamePane.getChildren().add(dino);
-	}
+//	private void createDino(dinosaur chosendino) {
+//		dino = new ImageView(chosenDino.getUrlDino());
+//		dino.setPreserveRatio(true);
+//		dino.setFitHeight(135);
+//		dino.setLayoutX(GAME_WIDTH / 2);
+//		dino.setLayoutY(GAME_HEIGHT - 150);
+//		gamePane.getChildren().add(dino);
+//	}
 
 	private void createGameLoop() {
 		gameTimer = new AnimationTimer() {
@@ -258,15 +272,30 @@ public class GameViewManager {
 			public void handle(long now) {
 				// TODO Auto-generated method stub
 				moveGameElements();
-				checkIfElementsAreBehindTheDinoAndRelocate();
+				checkIfElementsAreBehindTheDinoAndRelocateAll();
 				checkIfElementsCollide();
 				moveDino();
 			}
 		};
 		gameTimer.start();
 	}
+	
+	private void checkIfElementsAreBehindTheDinoAndRelocateAll() {
+		medMeteors.checkIfElementsAreBehindTheDinoAndRelocate();
+		bigMeteors.checkIfElementsAreBehindTheDinoAndRelocate();
+		notYourFood.checkIfElementsAreBehindTheDinoAndRelocate();
+		food.checkIfElementsAreBehindTheDinoAndRelocate();
+	}
+	
+	private void checkIfElementsCollide() {
+		medMeteors.checkIfElementsCollide(dinosaur);
+		bigMeteors.checkIfElementsCollide(dinosaur);
+		food.checkIfElementsCollide(dinosaur);
+		
+	}
 
 	private void moveDino() {
+		ImageView dino = dinosaur.getDinoImage();
 		if (isLeftKeyPressed && !isRightKeyPressed) {
 			if (this.getDirection().equals("right")) {
 				dino.setScaleX(1);
@@ -380,8 +409,8 @@ public class GameViewManager {
 		return points;
 	}
 
-	private double calculateDistance(double x1, double x2, double y1, double y2) {
-		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-	}
+//	private double calculateDistance(double x1, double x2, double y1, double y2) {
+//		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+//	}
 
 }

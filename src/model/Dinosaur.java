@@ -15,6 +15,7 @@ public enum Dinosaur {
 		this.urlDino = urlDino;
 		this.typeDino = typeDino;
 		this.urlLife = urlLife;
+		this.urlFood = urlFood;
 	}
 	
 	public String getUrlLife() {
