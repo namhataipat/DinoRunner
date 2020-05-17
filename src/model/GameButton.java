@@ -12,6 +12,8 @@ import javafx.scene.text.Font;
 
 public class GameButton extends Button {
 
+	private final String FONT_PATH = ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString();
+	
 	
 	public GameButton(String text) {
 		setText(text);
@@ -24,7 +26,7 @@ public class GameButton extends Button {
 
 	private void setButtonFont() {
 		try {
-			setFont(Font.loadFont(ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString(), 21));
+			setFont(Font.loadFont(FONT_PATH, 21));
 		} catch (Exception e) {
 			setFont(Font.font("Verdana", 21));
 		}
@@ -34,7 +36,6 @@ public class GameButton extends Button {
 		Image pressedBtn = new Image(ClassLoader.getSystemResource("blue_button01.png").toString());
 		BackgroundImage pressedBtnBg = new BackgroundImage(pressedBtn, null,null,null,null);
 		this.setBackground(new Background(pressedBtnBg));
-	//	setStyle(BUTTON_PRESSED_STYLE);
 		setPrefHeight(45);
 		setLayoutY(getLayoutY() + 4);
 	}
@@ -43,7 +44,6 @@ public class GameButton extends Button {
 		Image freeBtn = new Image(ClassLoader.getSystemResource("blue_button00.png").toString());
 		BackgroundImage freeBtnBg = new BackgroundImage(freeBtn, null,null,null,null);
 		this.setBackground(new Background(freeBtnBg));
-	//	setStyle(BUTTON_FREE_STYLE);
 		setPrefHeight(49);
 		setLayoutY(getLayoutY()-4 );
 	}

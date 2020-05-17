@@ -1,7 +1,7 @@
 package entity;
 
 import entity.base.Collidable;
-import entity.base.FallingEntity;
+import entity.FallingEntity;
 import javafx.scene.media.AudioClip;
 import view.GameViewManager;
 
@@ -16,18 +16,15 @@ public class Meteor extends FallingEntity implements Collidable  {
 
 	@Override
 	public void checkIfElementsCollide(Dino d) {
-		if (this.isElementsCollide(d)) {
+		int e = this.whichElementsCollide(d);
+		if (e != -1) {
 			AudioClip damageSound = new AudioClip(ClassLoader.getSystemResource("sound/damage.wav").toString());
 			damageSound.play();
 			GameViewManager.removeLife();
-			for (int i = 0; i < imageView.length; i++) {
-				this.setNewElementPosition(imageView[i]);
+			GameViewManager.setNewElementPosition(imageView[e]);
 			}
 		}
 		
 	}
 
 	
-	
-
-}

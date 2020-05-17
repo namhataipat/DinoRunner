@@ -3,6 +3,7 @@ package entity;
 import entity.base.Entity;
 import javafx.scene.image.ImageView;
 import model.Dinosaur;
+import view.GameViewManager;
 
 public class Dino extends Entity{
 	
@@ -18,6 +19,7 @@ public class Dino extends Entity{
 		dino.setFitHeight(135);
 		dino.setLayoutX(400);
 		dino.setLayoutY(450);
+		GameViewManager.gamePane.getChildren().add(dino);
 	} 
 	
 	public ImageView getDinoImage() {

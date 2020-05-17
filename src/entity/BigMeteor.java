@@ -1,7 +1,7 @@
 package entity;
 
 import entity.base.Collidable;
-import entity.base.FallingEntity;
+import entity.FallingEntity;
 import javafx.scene.media.AudioClip;
 import view.GameViewManager;
 
@@ -13,18 +13,19 @@ public class BigMeteor extends FallingEntity implements Collidable  {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	@Override
 	public void checkIfElementsCollide(Dino d) {
-		if (this.isElementsCollide(d)) {
+		if (this.whichElementsCollide(d) != -1) {
 			AudioClip damageSound = new AudioClip(ClassLoader.getSystemResource("sound/damage.wav").toString());
 			damageSound.play();
 			GameViewManager.removeLife();
 			if (GameViewManager.getPlayerLife() >= 0) {
 				GameViewManager.removeLife();
 			}
-			for (int i = 0; i < imageView.length; i++) {
-				this.setNewElementPosition(imageView[i]);
+			GameViewManager.setNewElementPosition(imageView[0]);
 			}
 		}
-	}
+
+	
 }

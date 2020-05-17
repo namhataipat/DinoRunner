@@ -1,7 +1,6 @@
 package model;
 
 import javafx.animation.TranslateTransition;
-import javafx.scene.Parent;
 import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -13,7 +12,6 @@ import javafx.util.Duration;
 
 public class RunningDinoSubScene extends SubScene {
 
-	private final static String FONT_PATH = ClassLoader.getSystemResource("Pomeranian-Regular.ttf").toString();
 	private final static String BACKGROUND_IMAGE = ClassLoader.getSystemResource("glassPanel_cornerTL.png").toString();
 	
 	private boolean isHidden;
